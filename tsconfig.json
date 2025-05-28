@@ -1,0 +1,35 @@
+{
+    "compilerOptions": {
+      "target": "ES2021",
+      "module": "CommonJS",
+      "moduleResolution": "node",
+      "strict": true,
+      "noImplicitAny": true,
+      "strictNullChecks": true,
+      "strictFunctionTypes": true,
+      "strictBindCallApply": true,
+      "strictPropertyInitialization": true,
+      "noImplicitThis": true,
+      "useUnknownInCatchVariables": true,
+      "alwaysStrict": true,
+      "skipLibCheck": true,
+      "esModuleInterop": true,
+      "forceConsistentCasingInFileNames": true,
+      "baseUrl": ".",
+      "paths": {
+        "@/*": ["src/*"]
+      },
+      "outDir": "./build",
+      "sourceMap": true,
+      "lib": ["DOM", "ES2021"],
+      "declaration": true
+    },
+    "include": [
+      "src/**/*.ts", 
+      "*.config.js", 
+      ".eslintrc.js",
+      ".stylelintrc.js",
+      "webpack.config.js"
+    ],
+    "exclude": ["node_modules", "build"]
+  }
