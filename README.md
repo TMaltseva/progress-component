@@ -82,11 +82,11 @@ const progress = new ProgressComponent({
   hidden: false
 });
 
-// Render to DOM
-document.body.append(progress.render());
+// Update value with animation (default behavior)
+progress.setValue(75);
 
-// Update value with animation
-progress.setValue(75, true);
+// Update value without animation
+progress.setValue(50, false);
 
 // Toggle animations
 progress.setAnimated(true);
