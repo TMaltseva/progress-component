@@ -30,8 +30,16 @@
     padding: $spacing-md;
     min-width: 0;
 
+    @include respond-to('mobile') {
+      padding: $spacing-xs;
+      align-items: flex-start;
+      padding-top: 5vh;
+      height: 100vh;
+    }
+
     @include respond-to('mobile-small') {
-        display: block;
-        overflow-x: auto;
+      display: block;
+      overflow-x: auto;
+      height: 100vh;
     }
   }
