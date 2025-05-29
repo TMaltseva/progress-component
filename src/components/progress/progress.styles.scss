@@ -1,0 +1,278 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+@use '../../styles/animations' as *;
+
+.progress-wrapper {
+  @include flex-center;
+  position: relative;
+  transition: opacity $transition-duration $transition-timing;
+
+  &.progress-hidden {
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  &.progress-animated {
+    &::before {
+      content: '';
+      @include cover;
+      border-radius: 50%;
+      background: radial-gradient(
+        circle, 
+        rgba($color-primary, 0.08) 30%, 
+        transparent 70%
+      );
+      pointer-events: none;
+      animation: progress-glow 2s ease-in-out infinite alternate;
+    }
+  }
+}
+
+.progress-circle {
+  display: block;
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: crisp-edges;
+  width: 120px;
+  height: 120px;
+  
+  @include respond-to('landscape-mobile') {
+    width: 100px;
+    height: 100px;
+  }
+
+  @include respond-to('mobile') {
+    width: 100px;
+    height: 100px;
+  }
+
+  @include respond-to('mobile-small') {
+    width: 80px;
+    height: 80px;
+  }
+}
+
+.app-container {
+  @include flex-column;
+  background: $color-surface;
+  box-shadow: $shadow-card;
+  overflow: hidden;
+  width: 100%;
+  max-width: 500px;
+  min-width: 300px;
+  position: relative;
+  padding: $spacing-2xl;
+  border-radius: $border-radius-md;
+  margin: 0 auto;
+
+  @include respond-to('landscape-tablet') {
+    max-width: 800px;
+    min-width: 600px; 
+  }
+
+  @include respond-to('mobile') {
+    margin: $spacing-sm;
+    max-width: none;
+  }
+
+  @include respond-to('mobile-small') {
+    min-width: 300px;
+    overflow-x: visible;
+    transform: scale(1) !important;
+  }
+}
+
+.main-wrapper {
+  @include flex-between;
+
+  @include respond-to('mobile') {
+    @include flex-column;
+  }
+}
+
+.orientation-label {
+  position: absolute;
+  top: $spacing-sm;
+  right: $spacing-md;
+  font-size: $font-size-xs;
+  color: $color-text-secondary;
+  background: rgba($color-surface, 0.95);
+  padding: $spacing-xs $spacing-sm;
+  border-radius: $border-radius-sm;
+  z-index: 10;
+  -webkit-backdrop-filter: blur(4px);
+  backdrop-filter: blur(4px);
+  font-family: $font-family-base;
+  font-weight: $font-weight-medium;
+}
+
+.header {
+  @include flex-column;
+
+  h1 {
+    color: $color-text-primary;
+    font-size: $font-size-xl;
+    font-weight: $font-weight-semibold;
+    font-family: $font-family-base;
+    line-height: $line-height-tight;
+    justify-self: flex-start;
+    margin: 0;
+
+    @include respond-to('mobile') {
+      font-size: $font-size-lg;
+    }
+  }
+}
+
+.progress-section {
+  padding: $spacing-2xl $spacing-xl;
+  @include flex-center;
+  position: relative;
+
+  @include respond-to('landscape-tablet') {
+    flex: 1;
+    padding-left: 5rem;
+  }
+
+  @include respond-to('mobile') {
+    padding: $spacing-xl $spacing-lg;
+    min-height: 250px;
+  }
+
+  @include respond-to('mobile-small') {
+    min-height: 200px;
+    padding: $spacing-lg $spacing-md;
+  }
+}
+
+.controls {
+  @include flex-center;
+  padding: $spacing-xl;
+
+  @include respond-to('landscape-tablet') {
+    flex: 0 0 auto;
+    width: 400px;
+  }
+
+  @include respond-to('mobile') {
+    padding: $spacing-lg;
+  }
+
+  @include respond-to('mobile-small') {
+    padding: $spacing-md;
+  }
+}
+
+.controls-grid {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    grid-gap: $spacing-md $spacing-lg;
+    width: 100%;
+    max-width: 250px;
+    align-items: center;
+  
+    @include respond-to('mobile') {
+      max-width: 220px;
+      grid-gap: $spacing-sm $spacing-md;
+    }
+  
+    @include respond-to('mobile-small') {
+      max-width: 200px;
+      grid-gap: $spacing-xs $spacing-sm;
+    }
+  }
+
+.control-group {
+  @include flex-between;
+  flex-direction: row-reverse;
+  padding: $spacing-md 0;
+
+  @include respond-to('mobile') {
+    padding: $spacing-sm 0;
+  }
+
+.control-label {
+    font-weight: $font-weight-medium;
+    color: $color-text-primary;
+    font-size: $font-size-base;
+    font-family: $font-family-base;
+    line-height: $line-height-base;
+    margin-left: $spacing-sm;
+    text-align: left;
+    white-space: nowrap;
+  }
+}
+
+.control-input {
+    justify-self: start;
+  }
+
+.value-input {
+    @include input-base;
+    width: 55px;
+    text-align: center;
+    font-weight: $font-weight-medium;
+  
+    &::-webkit-outer-spin-button,
+    &::-webkit-inner-spin-button {
+      @include appearance(none);
+      margin: 0;
+    }
+  
+    &[type='number'] {
+      @include appearance(textfield);
+    }
+  
+    &:focus {
+      border-color: $color-text-primary;
+      box-shadow: 0 0 0 3px rgba($color-dark, 0.1);
+      outline: none;
+    }
+
+    &::selection {
+        background-color: $color-dark;
+        color: $color-surface;
+      }
+  }
+
+  .toggle-switch {
+    position: relative;
+    width: 55px;
+    height: 28px;
+    background: $color-border-dark;
+    border-radius: 14px;
+    cursor: pointer;
+    transition-property: background-color;
+    transition-duration: $transition-duration;
+    transition-timing-function: $transition-timing;
+    border: none;
+    outline: none;
+
+    &.active {
+      background: $color-primary;
+  
+      .toggle-slider {
+        transform: translateX(calc(55px - 24px - 4px));
+      }
+    }
+  
+    &:hover {
+      opacity: 0.8;
+    }
+  
+    &:focus-visible {
+      outline: 1px solid $color-primary;
+      outline-offset: 2px;
+    }
+  
+    .toggle-slider {
+      position: absolute;
+      top: 2px;
+      left: 2px;
+      width: 24px;
+      height: 24px;
+      background: $color-surface;
+      border-radius: 50%;
+      transition: transform $transition-duration $transition-timing;
+      box-shadow: $shadow-sm;
+    }
+  }
