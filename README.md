@@ -4,7 +4,7 @@ A modern, responsive circular progress component built with vanilla TypeScript, 
 
 ## 🚀 Demo
 
-- **Live Demo**: [GitHub Pages Link](https://github.com/TMaltseva/progress-component/)
+- **Live Demo**: [GitHub Pages Link](https://tmaltseva.github.io/progress-component/)
 - **Repository**: [GitHub Repository](https://github.com/TMaltseva/progress-component)
 
 ## ✨ Features
