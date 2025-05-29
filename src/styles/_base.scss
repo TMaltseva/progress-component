@@ -1,0 +1,37 @@
+@use 'sass:color';
+@use 'variables' as *;
+@use 'mixins' as *;
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  html, body {
+    width: 100%;
+    overflow-x: hidden;
+  }
+
+  html {
+    font-family: $font-family-base;
+    font-size: 16px;
+    line-height: 1.5;
+    color: $color-text-primary;
+    background-color: $color-background;
+  }
+
+  body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    padding: $spacing-md;
+    min-width: 0;
+
+    @include respond-to('mobile-small') {
+        display: block;
+        overflow-x: auto;
+    }
+  }
